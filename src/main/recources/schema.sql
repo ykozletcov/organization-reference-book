@@ -24,7 +24,7 @@ CREATE IF NOT EXISTS employee (
     middle_name     VARCHAR(50),
     second_name     VARCHAR(50),
     last_name       VARCHAR(50)     NOT NULL,
-    position        VARCHAR(50)     NOT NULL,
+    position_id     INTEGER         NOT NULL,
     phone           VARCHAR(18),
     doc_code        VARCHAR(3),
     doc_number      VARCHAR(15),
@@ -32,6 +32,11 @@ CREATE IF NOT EXISTS employee (
     citizenship_code VARCHAR(4),
     office_id       INTEGER         NOT NULL,
     is_identified   SMALLINT
+);
+
+CREATE IF NOT EXISTS position (
+    id              INTEGER PRIMARY KEY AUTO_INCREMENT,
+    name            VARCHAR(50)     NOT NULL
 );
 
 CREATE IF NOT EXISTS doc (
@@ -106,7 +111,7 @@ COMMENT ON COLUMN employee.first_name       IS 'имя сотрудника';
 COMMENT ON COLUMN employee.middle_name      IS 'отчество сотрудника (для стран СНГ)';
 COMMENT ON COLUMN employee.second_name      IS 'второе имя сотрудника (для англоговорящих стран)';
 COMMENT ON COLUMN employee.last_name        IS 'фамилия сотрудника';
-COMMENT ON COLUMN employee.position         IS 'должность сотрудника';
+COMMENT ON COLUMN employee.position_id      IS 'внешний ключ - должность сотрудника';
 COMMENT ON COLUMN employee.phone            IS 'телефонный номер сотрудника';
 COMMENT ON COLUMN employee.doc_code         IS 'внешний ключ - код документа сотрудника';
 COMMENT ON COLUMN employee.doc_number       IS 'номер документа сотрудника';
@@ -114,3 +119,17 @@ COMMENT ON COLUMN employee.doc_date         IS 'дата выдачи докум
 COMMENT ON COLUMN employee.citizenship_code IS 'гражданство сотрудника';
 COMMENT ON COLUMN employee.office_id        IS 'внешний ключ - принадлежность офису';
 COMMENT ON COLUMN employee.is_identified    IS 'идентификация сотрудника';
+
+COMMENT ON TABLE position                   IS 'справочник должностей сотрудников';
+COMMENT ON COLUMN position.id               IS 'уникальный идентификатор должности';
+COMMENT ON COLUMN position.name             IS 'название должности';
+
+COMMENT ON TABLE doc                        IS 'справочник документов';
+COMMENT ON COLUMN doc.id                    IS 'уникальный идентификатор документа';
+COMMENT ON COLUMN doc.name                  IS 'название документа';
+COMMENT ON COLUMN doc.code                  IS 'код документа';
+
+COMMENT ON TABLE country                    IS 'справочник стран';
+COMMENT ON COLUMN country.id                IS 'уникальный идентификатор страны';
+COMMENT ON COLUMN country.name              IS 'название страны';
+COMMENT ON COLUMN country.code              IS 'код страны';
