@@ -30,3 +30,4 @@ INSERT INTO employee (first_name, middle_name, last_name, position_id, doc_code,
 
 INSERT INTO employee (first_name, middle_name, last_name, position_id, doc_code, doc_number, doc_date, citizenship_code, office_id, is_identified)
         VALUES ('Николай','Александрович','Романов',2,1,'6404 857413', '01.02.2003',1,1);
+
