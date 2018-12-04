@@ -1,4 +1,4 @@
-CREATE IF NOT EXISTS organization (
+CREATE TABLE IF NOT EXISTS organization (
     id              INTEGER PRIMARY KEY AUTO_INCREMENT,
     name            VARCHAR(100)    NOT NULL,
     full_name       VARCHAR(100)    NOT NULL,
@@ -29,7 +29,7 @@ COMMENT ON COLUMN organization.is_active    IS 'активность компа�
 
 
 
-CREATE IF NOT EXISTS office (
+CREATE TABLE IF NOT EXISTS office (
     id              INTEGER PRIMARY KEY AUTO_INCREMENT,
     name            VARCHAR(100)    NOT NULL,
     address         VARCHAR(120)    NOT NULL,
@@ -54,7 +54,7 @@ COMMENT ON COLUMN office.is_active          IS 'активность офиса'
 
 
 
-CREATE IF NOT EXISTS employee (
+CREATE TABLE IF NOT EXISTS employee (
     id              INTEGER PRIMARY KEY AUTO_INCREMENT,
     first_name      VARCHAR(50)     NOT NULL,
     middle_name     VARCHAR(50),
@@ -97,7 +97,7 @@ COMMENT ON COLUMN employee.is_identified    IS 'идентификация со�
 
 
 
-CREATE IF NOT EXISTS doc (
+CREATE TABLE IF NOT EXISTS doc (
     id              INTEGER PRIMARY KEY AUTO_INCREMENT,
     doc_list_id     INTEGER         NOT NULL,
     number          VARCHAR(15)     NOT NULL,
@@ -115,7 +115,7 @@ COMMENT ON COLUMN doc.doc_list_id           IS 'внешний ключ - вид
 COMMENT ON COLUMN doc.number                IS 'номер документа';
 COMMENT ON COLUMN doc.date                  IS 'дата выдачи документа';
 
-CREATE IF NOT EXISTS position_list (
+CREATE TABLE IF NOT EXISTS position_list (
     id              INTEGER PRIMARY KEY AUTO_INCREMENT,
     name            VARCHAR(50)     NOT NULL
 );
@@ -126,7 +126,7 @@ COMMENT ON COLUMN position_list.name        IS 'название должнос�
 
 
 
-CREATE IF NOT EXISTS doc_list (
+CREATE TABLE IF NOT EXISTS doc_list (
     id              INTEGER PRIMARY KEY AUTO_INCREMENT,
     name            VARCHAR(50)     NOT NULL,
     code            VARCHAR(3)      NOT NULL
@@ -140,7 +140,7 @@ COMMENT ON COLUMN doc_list.id               IS 'уникальный идент�
 COMMENT ON COLUMN doc_list.name             IS 'название документа';
 COMMENT ON COLUMN doc_list.code             IS 'код документа';
 
-CREATE IF NOT EXISTS country_list (
+CREATE TABLE IF NOT EXISTS country_list (
     id              INTEGER PRIMARY KEY AUTO_INCREMENT,
     name            VARCHAR(50)     NOT NULL,
     code            VARCHAR(4)      NOT NULL
