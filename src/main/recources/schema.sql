@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS office (
     organization_id INTEGER         NOT NULL,
     is_active       SMALLINT
 );
-ALTER TABLE office      ADD FOREIGN KEY organization_id     REFERENCES organization(id);
+ALTER TABLE office      ADD FOREIGN KEY (organization_id)     REFERENCES organization(id);
 
 CREATE INDEX IX_office_name                 ON office(name);
 CREATE INDEX IX_office_phone                ON office(phone);
@@ -67,9 +67,10 @@ CREATE TABLE IF NOT EXISTS employee (
     office_id       INTEGER         NOT NULL,
     is_identified   SMALLINT
 );
-ALTER TABLE employee    ADD FOREIGN KEY doc_id              REFERENCES doc(id);
-ALTER TABLE employee    ADD FOREIGN KEY citizenship_id      REFERENCES country_list(id);
-ALTER TABLE employee    ADD FOREIGN KEY office_id           REFERENCES office(id);
+ALTER TABLE employee    ADD FOREIGN KEY (position_id)         REFERENCES position_list(id);
+ALTER TABLE employee    ADD FOREIGN KEY (doc_id)              REFERENCES doc(id);
+ALTER TABLE employee    ADD FOREIGN KEY (citizenship_id)      REFERENCES country_list(id);
+ALTER TABLE employee    ADD FOREIGN KEY (office_id)           REFERENCES office(id);
 
 CREATE INDEX IX_employee_first_name         ON employee(first_name);
 CREATE INDEX IX_employee_middle_name        ON employee(middle_name);
@@ -103,7 +104,7 @@ CREATE TABLE IF NOT EXISTS doc (
     number          VARCHAR(15)     NOT NULL,
     date            VARCHAR(10)     NOT NULL,
 );
-ALTER TABLE doc         ADD FOREIGN KEY doc_list_id         REFERENCES doc_list(id);
+ALTER TABLE doc         ADD FOREIGN KEY (doc_list_id)         REFERENCES doc_list(id);
 
 CREATE INDEX IX_doc_doc_list_id             ON doc(doc_number);
 CREATE INDEX IX_doc_number                  ON doc(doc_number);
