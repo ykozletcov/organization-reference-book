@@ -25,15 +25,17 @@ INSERT INTO office (name, address, phone, organization_id, is_active)
 INSERT INTO office (name, address, phone, organization_id, is_active)
         VALUES ('Сателлит+','г.Саратов, ул.Тархова, 10','+7(8452)234-654',2,0);
 
-INSERT INTO doc (doc_list_id, number, date) VALUES (1,'6305 136758', '21.01.2008');
-INSERT INTO doc (doc_list_id, number, date) VALUES (1,'6404 857413', '01.02.2003');
+INSERT INTO employee (first_name, middle_name, last_name, position_id, citizenship_id, is_identified)
+        VALUES ('Иван','Федорович','Крузенштерн',1,1,1);
 
-INSERT INTO employee (first_name, middle_name, last_name, position_id, doc_id, citizenship_id, office_id, is_identified)
-        VALUES ('Иван','Федорович','Крузенштерн',1,1,1,1,1);
+INSERT INTO employee (first_name, middle_name, last_name, position_id, citizenship_id, is_identified)
+        VALUES ('Николай','Александрович','Романов',1,1,1);
 
-INSERT INTO employee (first_name, middle_name, last_name, position_id, doc_id, citizenship_id, office_id, is_identified)
-        VALUES ('Николай','Александрович','Романов',1,2,1,2,1);
+INSERT INTO doc (employee_id, doc_list_id, number, date) VALUES (1,1,'6305 136758', '21.01.2008');
+INSERT INTO doc (employee_id, doc_list_id, number, date) VALUES (2,1,'6404 857413', '01.02.2003');
 
+INSERT INTO office_employee (employee_id, office_id) VALUES (1,1);
+INSERT INTO office_employee (employee_id, office_id) VALUES (2,2);
 
 
 
